@@ -21,6 +21,7 @@ function App() {
   const [vercelToken, setVercelToken] = React.useState('')
   const [loader, setLoader] = React.useState(false)
 
+  //step-3 get accesstoken from vercel, use it get more project details, use them to get project env variables
   const initiate = async () => {
     let pid='';
     const obj = {
@@ -69,11 +70,13 @@ function App() {
     console.log(envData)
   }
 
+  //step-2
   React.useEffect(() => {
     if(code)
       initiate();
   }, [code])
 
+//step-6.5
   const saveEnv = async(key, value) => {
     await fetch(`https://api.vercel.com/v10/projects/${pid}/env?upsert=true`, {
       "body": JSON.stringify({
@@ -93,6 +96,8 @@ function App() {
 
   }
 
+  //step-6 logging in use user name password and getting auth token, and using that for create connection api
+  // this flow will change since we are adding entire page in embed.
   const finalize = async() => {
     let _token = ''
     const tokenRes = await fetch(`https://${cluster}/api/rest/2.0/auth/token/full`, {
@@ -145,15 +150,18 @@ function App() {
     console.log('done')
     setTimeout(() => {
       console.log('closing')
+      //step-7 we set env variables in 6.5 and close the wizard by redirecting to vercels url.
       window.location = (new URLSearchParams(window.location.search)).get('next')
     }, 1000)
   }
+  //step-5
   React.useEffect(() => {
     if(loader) {
       finalize()
     }
   }, [loader])
 
+  //step-1 get initial url params sent by vercel
   React.useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
     for (const p of searchParams) {
@@ -163,6 +171,8 @@ function App() {
     }
     console.log('------------------')
   },[])
+
+  //step-4 user fills up details and press next
   const handleNext = () => {
     console.log('handleNext')
     setLoader(true)
