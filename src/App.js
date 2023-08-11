@@ -1,16 +1,16 @@
 import React from 'react';
 import './App.css';
 
-const CLIENT_ID = 'oac_yLfaITMJiCjRBscm4xFpXFom'
-const CLIENT_SECRET = 'kWXH76nKYvU2rBLQeW0R73u9'
+const CLIENT_ID = 'oac_yLfaITMxFpXFom'
+const CLIENT_SECRET = 'kWXH76nK3u9'
 const TOKEN_RESPONSE = {
-  "access_token":"kFcWXDXMDUrqxSBqHhurAHsi",
+  "access_token":"kFcWXDXMDUrqxSBqH",
   "token_type":"Bearer",
-  "installation_id":"icfg_qZHFfUfMLSK9EE0GrpYoNzFr",
-  "user_id":"G2KKqqfZh4agndAeOckgXcqS",
+  "installation_id":"icfg_qZHFfUfML",
+  "user_id":"G2KKqqfZh4a",
   "team_id":null
 }
-const PROJECT_ID = 'prj_W8AdmDjAuYDmaEAWO1WC18p8r2gf'
+const PROJECT_ID = 'prj_W8AdmC18p8r2gf'
 function App() {
   const [cluster, setCluster] = React.useState('')
   const [username, setUsername] = React.useState('')
